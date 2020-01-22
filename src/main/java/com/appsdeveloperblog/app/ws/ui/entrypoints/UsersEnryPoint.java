@@ -1,6 +1,7 @@
 package com.appsdeveloperblog.app.ws.ui.entrypoints;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -25,14 +26,19 @@ public class UsersEnryPoint {
 		// Prepare UserDTO
 		UserDTO userDto = new UserDTO();
 		BeanUtils.copyProperties(requestObject, userDto);
-		
+
 		// Create new user
 		UsersService userService = new UsersServiceImpl();
 		UserDTO createdUserProfile = userService.createUser(userDto);
-		
-		//Prepare Response
+
+		// Prepare Response
 		BeanUtils.copyProperties(createdUserProfile, response);
 
 		return response;
+	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String testingJersy() {
+		return "Workin hard";
 	}
 }
