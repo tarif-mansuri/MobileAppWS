@@ -1,0 +1,20 @@
+create user 'tarif'@'localhost' identified by 'tarif';
+grant all privileges on db.* to 'tarif'
+
+
+
+CREAT USER:
+1.Class: UserEntryPoint
+	>>Create user function will be called  (Object CreateUserRequest)
+	>>Prepare UserDTO
+	>>Instantiat UserServiceImpl
+	>>Call create User Service and pass UserDTO Object
+		Class: UserServiceImpl
+			>>Validate UerDTO Fields in some utils
+			>>Check if user already exists
+			>>Generate Salt using utils
+			>>Generate password using utils
+			>>Instantiat MySQLDAO(Pass via Constructor) and save the UserDTO
+			>>Return Saved User UserDTO
+	>>Convert UserDTO to UserProfileResponse
+	>>Return UserProfileResponse 
