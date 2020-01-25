@@ -13,15 +13,15 @@ import com.appsdeveloperblog.app.ws.service.UsersService;
 import com.appsdeveloperblog.app.ws.service.impl.UsersServiceImpl;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDTO;
 import com.appsdeveloperblog.app.ws.ui.request.CreateUserRequest;
-import com.appsdeveloperblog.app.ws.ui.response.UserProfileRest;
+import com.appsdeveloperblog.app.ws.ui.response.UserProfileResponse;
 
 @Path("/users")
 public class UsersEnryPoint {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public UserProfileRest createUser(CreateUserRequest requestObject) {
-		UserProfileRest response = new UserProfileRest();
+	public UserProfileResponse createUser(CreateUserRequest requestObject) {
+		UserProfileResponse response = new UserProfileResponse();
 
 		// Prepare UserDTO
 		UserDTO userDto = new UserDTO();

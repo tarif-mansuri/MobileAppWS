@@ -17,6 +17,8 @@ public class UsersServiceImpl implements UsersService{
 	
 	UserProfileUtils userProfileUtils = new UserProfileUtils();
 	public UserDTO createUser(UserDTO userDto) {
+		
+		UserDTO returnValue = null;
 		//Validate the required fields
 		userProfileUtils.validateRequiredFields(userDto);
 		
@@ -39,12 +41,22 @@ public class UsersServiceImpl implements UsersService{
 		userDto.setSalt(salt);
 		userDto.setEncryptedPassword(encriptedPassword);
 		//Record data into a database
-		
+		returnValue = this.saveUser(userDto);
 		//return back the user profile
 		
 		
 		
-		return null;
+		return returnValue;
+	}
+	private UserDTO saveUser(UserDTO userDto) {
+		UserDTO returnValue = null;
+		try {
+			this.database.openConnection();
+			returnValue = database.saveUser(userDto);
+		}finally {
+			database.closeConnection();
+		}
+		return returnValue;
 	}
 	private UserDTO getUserByUserName(String userName) {
 		UserDTO userDto = null;
@@ -54,7 +66,11 @@ public class UsersServiceImpl implements UsersService{
 		try {
 			this.database.openConnection();
 			userDto = database.getUserByName(userName);
-		}finally {
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		finally {
 			database.closeConnection();
 		}
 		return userDto;
