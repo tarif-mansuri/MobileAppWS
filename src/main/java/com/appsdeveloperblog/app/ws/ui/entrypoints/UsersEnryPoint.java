@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.BeanUtils;
 
+import com.appsdeveloperblog.app.ws.annotations.Secured;
 import com.appsdeveloperblog.app.ws.service.UsersService;
 import com.appsdeveloperblog.app.ws.service.impl.UsersServiceImpl;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDTO;
@@ -38,18 +39,19 @@ public class UsersEnryPoint {
 		return response;
 	}
 
+	@Secured
 	@GET
 	@Path("/{id}")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public UserProfileResponse testingJersy(@PathParam("id") String userId) {
 		UserProfileResponse returnValue = null;
-		
+
 		UsersService userService = new UsersServiceImpl();
 		UserDTO userDto = userService.getUser(userId);
-		
+
 		returnValue = new UserProfileResponse();
 		BeanUtils.copyProperties(userDto, returnValue);
-		
+
 		return returnValue;
 	}
 }

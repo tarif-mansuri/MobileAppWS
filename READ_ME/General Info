@@ -1,3 +1,4 @@
+SELECT User FROM mysql.user;
 create user 'tarif'@'localhost' identified by 'tarif';
 grant all privileges on db.* to 'tarif'
 
