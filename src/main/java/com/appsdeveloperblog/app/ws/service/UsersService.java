@@ -1,5 +1,7 @@
 package com.appsdeveloperblog.app.ws.service;
 
+import java.util.List;
+
 import com.appsdeveloperblog.app.ws.shared.dto.UserDTO;
 
 public interface UsersService {
@@ -8,4 +10,6 @@ public interface UsersService {
 	public UserDTO getUser(String userId);
 
 	public UserDTO getUserByUserName(String userName);
+
+	public List<UserDTO> getUsers(int start, int limit);
 }
