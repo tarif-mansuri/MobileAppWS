@@ -1,5 +1,7 @@
 package com.appsdeveloperblog.app.ws.service.impl;
 
+import java.util.List;
+
 import com.appsdeveloperblog.app.ws.exceptions.CouldNotCreatRecordException;
 import com.appsdeveloperblog.app.ws.exceptions.NoRecordFoundException;
 import com.appsdeveloperblog.app.ws.io.dao.DAO;
@@ -86,5 +88,18 @@ public class UsersServiceImpl implements UsersService {
 			database.closeConnection();
 		}
 		return userDto;
+	}
+
+	@Override
+	public List<UserDTO> getUsers(int start, int limit) {
+		List<UserDTO> users = null;
+		
+		try {
+			this.database.openConnection();
+			users = database.getUsers(start, limit);
+		}finally{
+			database.closeConnection();
+		}
+		return users;
 	}
 }
