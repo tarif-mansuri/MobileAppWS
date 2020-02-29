@@ -13,7 +13,7 @@ import javax.crypto.spec.PBEKeySpec;
 
 import com.appsdeveloperblog.app.ws.exceptions.MissingRequiredFieldException;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDTO;
-import com.appsdeveloperblog.app.ws.ui.response.ErrorMessages;
+import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
 
 public class UserProfileUtils {
 

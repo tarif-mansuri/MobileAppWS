@@ -111,4 +111,13 @@ public class MySQLDAO implements DAO {
 		}
 		return returnValue;
 	}
+
+	@Override
+	public void deleteUserProfile(UserDTO userDto) {
+		UserEntity userEntity = new UserEntity();
+		BeanUtils.copyProperties(userDto, userEntity);
+		session.beginTransaction();
+		session.delete(userEntity);
+		session.getTransaction().commit();
+	}
 }

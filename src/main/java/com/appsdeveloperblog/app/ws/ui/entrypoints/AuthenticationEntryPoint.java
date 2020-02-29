@@ -9,8 +9,8 @@ import javax.ws.rs.core.MediaType;
 import com.appsdeveloperblog.app.ws.service.AuthenticationService;
 import com.appsdeveloperblog.app.ws.service.impl.AuthenticationServiceImpl;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDTO;
-import com.appsdeveloperblog.app.ws.ui.request.LoginCredentials;
-import com.appsdeveloperblog.app.ws.ui.response.AuthenticationDetails;
+import com.appsdeveloperblog.app.ws.ui.model.request.LoginCredentials;
+import com.appsdeveloperblog.app.ws.ui.model.response.AuthenticationDetails;
 
 @Path("/authentication")
 public class AuthenticationEntryPoint {

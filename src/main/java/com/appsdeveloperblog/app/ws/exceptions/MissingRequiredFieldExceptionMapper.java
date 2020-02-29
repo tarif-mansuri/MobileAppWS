@@ -4,8 +4,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import com.appsdeveloperblog.app.ws.ui.response.ErrorMessage;
-import com.appsdeveloperblog.app.ws.ui.response.ErrorMessages;
+import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessage;
+import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
 
 @Provider
 public class MissingRequiredFieldExceptionMapper implements ExceptionMapper<MissingRequiredFieldException> {

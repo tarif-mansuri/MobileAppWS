@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws.ui.response;
+package com.appsdeveloperblog.app.ws.ui.model.response;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
