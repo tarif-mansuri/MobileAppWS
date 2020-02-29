@@ -1,19 +1,17 @@
+//$Id$
 package com.appsdeveloperblog.app.ws.exceptions;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
 
 import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessage;
 import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
 
-@Provider
-public class GenericExceptionMapper implements ExceptionMapper<Throwable>{
+public class CouldNotDeleteRecordExceptionMapper implements ExceptionMapper<CouldNotDeleteRecordException> {
 
 	@Override
-	public Response toResponse(Throwable exception) {
-		ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(),
-				ErrorMessages.INTERNAL_SERVER_ERROR.name(), "http://appsdeveloper.com");
+	public Response toResponse(CouldNotDeleteRecordException exception) {
+		ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(), ErrorMessages.COULD_NOT_DELETE_RECORD.name(), "http://localhost.com");
 		return Response.status(Response.Status.BAD_REQUEST).entity(errorMessage).build();
 	}
 

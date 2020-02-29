@@ -3,12 +3,14 @@ package com.appsdeveloperblog.app.ws.service.impl;
 import java.util.List;
 
 import com.appsdeveloperblog.app.ws.exceptions.CouldNotCreatRecordException;
+import com.appsdeveloperblog.app.ws.exceptions.CouldNotDeleteRecordException;
+import com.appsdeveloperblog.app.ws.exceptions.CouldNotUpdateRecordException;
 import com.appsdeveloperblog.app.ws.exceptions.NoRecordFoundException;
 import com.appsdeveloperblog.app.ws.io.dao.DAO;
 import com.appsdeveloperblog.app.ws.io.dao.impl.MySQLDAO;
 import com.appsdeveloperblog.app.ws.service.UsersService;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDTO;
-import com.appsdeveloperblog.app.ws.ui.response.ErrorMessages;
+import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
 import com.appsdeveloperblog.app.ws.utils.UserProfileUtils;
 
 public class UsersServiceImpl implements UsersService {
@@ -101,5 +103,32 @@ public class UsersServiceImpl implements UsersService {
 			database.closeConnection();
 		}
 		return users;
+	}
+
+	@Override
+	public void updateUserDetails(UserDTO userDto) {
+		try {
+			//Connect to database
+			this.database.openConnection();
+			this.database.updateUserProfile(userDto);
+		}catch(Exception e) {
+			throw new CouldNotUpdateRecordException(e.getMessage());
+		}finally {
+			this.database.closeConnection();
+		}
+		
+	}
+
+	@Override
+	public void deleteUser(UserDTO userDto) {
+		try {
+			this.database.openConnection();
+			this.database.deleteUserProfile(userDto);
+		}catch(Exception e) {
+			throw new CouldNotDeleteRecordException(e.getMessage());
+		}finally {
+			this.database.closeConnection(); 
+		}
+		
 	}
 }

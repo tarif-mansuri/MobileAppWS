@@ -12,7 +12,7 @@ import com.appsdeveloperblog.app.ws.io.dao.impl.MySQLDAO;
 import com.appsdeveloperblog.app.ws.service.AuthenticationService;
 import com.appsdeveloperblog.app.ws.service.UsersService;
 import com.appsdeveloperblog.app.ws.shared.dto.UserDTO;
-import com.appsdeveloperblog.app.ws.ui.response.ErrorMessages;
+import com.appsdeveloperblog.app.ws.ui.model.response.ErrorMessages;
 import com.appsdeveloperblog.app.ws.utils.UserProfileUtils;
 
 public class AuthenticationServiceImpl implements AuthenticationService {

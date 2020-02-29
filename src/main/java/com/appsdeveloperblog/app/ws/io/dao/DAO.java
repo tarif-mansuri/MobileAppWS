@@ -18,4 +18,6 @@ public interface DAO {
 	void updateUserProfile(UserDTO userDto);
 
 	List<UserDTO> getUsers(int start, int limit);
+
+	void deleteUserProfile(UserDTO userDto);
 }
